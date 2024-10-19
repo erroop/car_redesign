@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <!-- 반응형 [s] -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="imagetoolbar" content="no">
+    <!-- 반응형 [e] -->
+    <meta name="naver-site-verification" content=""/><!-- 네이버 소유확인 -->
+    <meta name="description" content=""><!-- 사이트 설명문구 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sample">
+    <meta property="og:description" content=""><!-- 사이트 설명문구 -->
+    <meta property="og:image" content="img/common/logo.png">
+    <meta property="og:url" content="">
+    <title>Sample</title>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/topmenu.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+</head>
+<body>
+    <header>
+      <div id="hd_wrap" data-aos="fade-down"  data-aos-duration="800">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/common/logo.png" alt="로고">
+            </a>
+        </div>
+        <nav class="nav_wrap">
+            <ul class="nav_list">
+                <li class="nav_item">
+                    <a href="sub.html">회사소개</a>
+                </li>
+                <li class="nav_item">
+                    <a href="sub.html">사업안내</a>
+                </li>
+                <li class="nav_item">
+                    <a href="sub.html">특수탁송</a>
+                </li>
+                <li class="nav_item">
+                    <a href="sub.html">갤러리</a>
+                </li>
+            </ul>
+        </nav>
+        <a class="cs" href="sms:01038435647body=저희 샘플을 찾아주셔서 감사합니다.">문의·제안</a>
+      </div>
+    </header>
+    <main>
+        <div id="main_wrapper"> 
+            <!-- MainVisual [s] -->
+            <div id="mainVisual">
+                <div class="tit" data-aos="fade-down" data-aos-duration="800">
+                    <h1 class="pl">안전하고 신속한 차량 견인 서비스로 
+                        도로에서의 걱정을 덜어드립니다.</h1>
+                    <p>고장이나 사고 발생 시, 24시간 언제든지 전문 인력이 신속하게 출동하여 안전하게 차량을 이동시켜 드립니다.</p>
+                </div>
+                <div class="count" data-aos="fade-up" data-aos-duration="800">
+                    <h2>오늘의 견인 서비스로 이동한 총 거리</h2>
+                    <div class="num_container">
+                        <div class="num comma" data-count="200">200</div>  
+                        <span>KM</span>
+                    </div>
+                </div>
+                <div class="swiper-container main">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide bg01"></li>
+                        <li class="swiper-slide bg02"></li>
+                        <li class="swiper-slide bg03"></li>
+                    </ul>
+                </div>
+            </div>
+            <script>	
+               $(document).ready(function () {
+
+                /* main slide */
+                var main = new Swiper(".main", {
+                    loop:true,
+                    speed:1200,
+                    effect:"fade",
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false
+                    },
+                })
+
+                /* count */
+                function animateCount($element) {
+                    $element.each(function () {
+                    var $this = $(this),
+                        countTo = $this.attr('data-count');
+
+                    $({ countNum: 0 }).animate(
+                        {countNum: countTo,},
+                        {duration: 3000, // 애니메이션 지속 시간 (밀리초)
+                        easing: 'linear', // 애니메이션 easing 옵션
+                        step: function () {
+                            // 현재 값을 설정 (소수점 제거)
+                            $this.text(Math.floor(this.countNum));
+                        },
+                        complete: function () {
+                            // 애니메이션 완료 시 정확한 값을 설정
+                            $this.text(this.countNum);
+                        },
+                        }
+                    );
+                    });
+                }
+
+                // 화면에 요소가 보이는지 확인하고 애니메이션을 시작하는 함수
+                function checkIfInView() {
+                    var $count = $('.num');
+                    var windowHeight = $(window).height();
+                    var scrollTop = $(window).scrollTop();
+                    var elementOffset = $count.offset().top;
+                    var distance = elementOffset - scrollTop;
+
+                    // 요소가 뷰포트 내에 있는지 확인
+                    if (distance <= windowHeight && distance >= 0) {
+                    animateCount($count); // 요소가 뷰포트에 보이면 애니메이션 시작
+                    $(window).off('scroll', checkIfInView); // 애니메이션이 시작되면 스크롤 이벤트를 해제
+                    }
+                }
+
+                $(window).on('scroll', checkIfInView); // 스크롤 이벤트 등록
+                checkIfInView(); // 페이지 로드시 확인
+                });
+                </script>
+            <!-- MainVisual [e] -->
+            <!-- Section [s] -->
+            <section id="section">
+               <!-- inc01 [s] -->
+                <div id="inc01">
+                    <div class="inc01_wrap">
+                        <div class="pager" data-aos="fade-right"  data-aos-duration="1200"></div>
+                        <div class="swiper-container inc01_img" data-aos="zoom-in"  data-aos-duration="1200">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <img src="img/main/inc01/img01.jpg" alt="차량이 대교를 건너고 있는 사진">
+                                </li>
+                                <li class="swiper-slide">
+                                    <img src="img/main/inc01/img02.jpg" alt="최첨단 기술로 차량의 혼잡도를 계산하는 사진">
+                                </li>
+                                <li class="swiper-slide">
+                                    <img src="img/main/inc01/img03.jpg" alt="스포츠카">
+                                </li>
+                                <li class="swiper-slide">
+                                    <img src="img/main/inc01/img05.jpg" alt="사람들이 회의를 하고 있는 사진">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="swiper-container inc01_tit" data-aos="fade-left"  data-aos-duration="1200">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <div class="en">Long-Distance Transport</div>
+                                    <h2 class="tit">장거리 탁송</h2>
+                                    <p class="pl">국내 긴 거리의 차량 이동이 필요한 경우,
+                                        안전하고 신뢰할 수 있는 장거리 탁송 서비스를 제공합니다.
+                                        목적지까지의 거리와 도로 상황에 맞춰 최적의 운송 계획을 수립합니다.</p>
+                                    <a href="index.html">more</a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="en">Short-Distance Transport</div>
+                                    <h2 class="tit">단거리 탁송</h2>
+                                    <p class="pl">지역 내 또는 인근 지역으로의 
+                                        짧은 거리 이동을 위한 서비스입니다.
+                                        빠르고 효율적인 운송을 통해 고객님의 차량을 신속히 이동합니다.</p>
+                                    <a href="index.html">more</a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="en">Specialty Vehicle Transport</div>
+                                    <h2 class="tit">특수 차량 탁송</h2>
+                                    <p class="pl">스포츠카, 클래식카, 고급차 등 특별한 
+                                        요구사항이 있는 차량의 경우, 맞춤형 보호와 운송 서비스를 제공합니다.
+                                        차량의 특성과 가치를 고려하여 최적의 운송 조건을 마련합니다..</p>
+                                    <a href="index.html">more</a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="en">Expert Team</div>
+                                    <h2 class="tit">전문가 팀</h2>
+                                    <p class="pl">경험이 풍부한 전문 운송 팀이 차량의 안전한 이동을 책임집니다.
+                                        팀원들은 다양한 차량 운송 경험을 바탕으로,
+                                        각 상황에 맞는 최적의 운송 방법을 제공합니다.</p>
+                                    <a href="index.html">more</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function(){
+                        var tab= ['Long-Distance', 'Short-Distance', 'Specialty Vehicle', 'Expert Team'];
+                        var inc01_img_slide = new Swiper(".inc01_img",{
+                            loop:true,
+                            speed:1200,
+                            effect:"fade",
+                            fadeEffect: { 
+                                crossFade: true 
+                            },
+                            pagination:{
+                                el:".inc01_wrap .pager",
+                                renderBullet: function (index, className) {
+                                    return '<p class="' + className + '"><span>' + (tab[index]) + '</span></p>';
+                                },
+                            },
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false
+                            },
+                        });
+
+                        var inc01_tit_slide = new Swiper(".inc01_tit", {
+                            loop:true,
+                            speed:1200,
+                            slidesPerView:1,
+                            direction: 'vertical',
+                            pagination:{
+                                el:".inc01_wrap .pager",
+                                renderBullet: function (index, className) {
+                                    return '<p class="' + className + '"><span>' + (tab[index]) + '</span></p>';
+                                },
+                                clickable:true,
+                            },
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false
+                            },
+                        });
+                        inc01_img_slide.controller.control = inc01_tit_slide;
+                        inc01_tit_slide.controller.control = inc01_img_slide;
+                    })
+                </script>
+               <!-- inc01 [e] -->
+               <!-- inc02 [s] -->
+                <div id="inc02">
+                    <div class="inc02_wrap">
+                        <div class="bg_line">
+                            <div class="bg"></div>
+                            <div class="bg"></div>
+                            <div class="bg"></div>
+                            <div class="bg"></div>
+                        </div>
+                        <div class="line_wrapper">
+                            <svg class="svg_line line1" stop-color="#82FFE1" style="opacity: 1; visibility: inherit;">
+                                <line x1="0" y1="90%" x2="100%" y2="78.5%" stroke="url(#paint1)"></line>
+                                <defs>
+                                    <linearGradient id="paint1">
+                                        <stop offset="0" stop-color="#82FFE1"></stop>
+                                        <stop offset="1" stop-color="#82FFE1"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <svg class="svg_line line2" style="opacity: 1; visibility: inherit;">
+                                <line x1="0" y1="78.5%" x2="100%" y2="67.2%" stroke="url(#paint2)"></line>
+                                <linearGradient id="paint2">
+                                    <stop offset="0" stop-color="#82FFE1"></stop>
+                                    <stop offset="1" stop-color="#FF00EE"></stop>
+                                </linearGradient>
+                            </svg>
+                            <svg class="svg_line line3" stop-color="#82FFE1" style="opacity: 1; visibility: inherit;">
+                                <line x1="0" y1="67.2%" x2="100%" y2="50%" stroke="url(#paint3)"></line>
+                                <defs>
+                                    <linearGradient id="paint3">
+                                        <stop offset="0" stop-color="#FF00EE"></stop>
+                                        <stop offset="1" stop-color="#FC489E"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <svg class="svg_line line4" style="opacity: 1; visibility: inherit;">
+                                <line x1="0" y1="50%" x2="100%" y2="37.5%" stroke="url(#paint4)"></line>
+                                <linearGradient id="paint4">
+                                    <stop offset="0" stop-color="#FC489E"></stop>
+                                    <stop offset="1" stop-color="#FF8523"></stop>
+                                </linearGradient>
+                            </svg>
+                            <svg class="svg_line line5" style="opacity: 1; visibility: inherit;">
+                                <line x1="0" y1="37.5%" x2="100%" y2="22.5%" stroke="url(#paint5)"></line>
+                                <linearGradient id="paint5">
+                                    <stop offset="0" stop-color="#FF8523"></stop>
+                                    <stop offset="1" stop-color="#FF8523"></stop>
+                                </linearGradient>
+                            </svg>
+                        </div>
+                        <div class="tit" data-aos="fade-up" data-aos-duration="1200">
+                            <p>"자체 기술력으로 지역 1등을 현실화하다."</p>
+                            <h2 class="pl">지역 시장 점유율
+                                1위가 되기까지</h2>
+                        </div>
+                        <ul class="year_list">
+                            <li class="list_item" data-aos="fade-up" data-aos-duration="1200">
+                                <div class="cont">
+                                    <div class="year_num">2021<span>년</span></div>
+                                    <p>처음 그 시작의 탄생</p>
+                                    <h3>샘플탁송의 시작</h3>
+                                </div>
+                            </li>
+                            <li class="list_item" data-aos="fade-up" data-aos-duration="1200">
+                                <div class="cont">
+                                    <div class="year_num">2022<span>년</span></div>
+                                    <p>처음 그 시작의 탄생</p>
+                                    <h3>샘플탁송의 시작</h3>
+                                </div>
+                            </li>
+                            <li class="list_item" data-aos="fade-up" data-aos-duration="1200">
+                                <div class="cont">
+                                    <div class="year_num">2023<span>년</span></div>
+                                    <p>처음 그 시작의 탄생</p>
+                                    <h3>샘플탁송의 시작</h3>
+                                </div>
+                            </li>
+                            <li class="list_item" data-aos="fade-up" data-aos-duration="1200">
+                                <div class="cont">
+                                    <div class="year_num">2024<span>년</span></div>
+                                    <p>처음 그 시작의 탄생</p>
+                                    <h3>샘플탁송의 시작</h3>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+               <!-- inc02 [e] -->
+               <!-- inc03 [s] -->
+                <div id="inc03">
+                    <div class="inc03_wrap" data-aos="fade-up" data-aos-duration="1200">
+                        <div class="swiper-container inc03">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <h2>TRANSPORT</h2>
+                                    <a href="">
+                                        <div class="img_cont">
+                                            <img src="img/main/inc02/img01.jpg" alt="">
+                                            <div class="tit">
+                                                <h3>데이터 기반 운송 관리</h3>
+                                                <p>데이터 분석을 통해 운송 경로를 최적화하고, 
+                                                    고객의 운송 경험을 개선합니다.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <h2>TRANSPORT</h2>
+                                    <a href="">
+                                        <div class="img_cont">
+                                            <img src="img/main/inc02/img02.jpg" alt="">
+                                            <div class="tit">
+                                                <h3>운송 품질 관리</h3>
+                                                <p>운송 품질을 보장하기 위해 
+                                                    정기적인 품질 검사를 실시합니다.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <h2>TRANSPORT</h2>
+                                    <a href="">
+                                        <div class="img_cont">
+                                            <img src="img/main/inc02/img03.jpg" alt="">
+                                            <div class="tit">
+                                                <h3>고객 피드백 및 개선 과정</h3>
+                                                <p>고객의 피드백을 소중히 여기며, 
+                                                    이를 바탕으로 서비스 개선을 지속적으로 진행합니다.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="nav_container">
+                                <div class="prev_nav">
+                                    <i data-feather="chevron-left"></i>
+                                </div>
+                                <div class="next_nav">
+                                    <i data-feather="chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function(){
+                            var inc03 = new Swiper(".inc03", {
+                                loop:true,
+                                speed:1200,
+                                centeredSlides:true,
+                                slidesPerView:"auto",
+                                spaceBetween:80,
+                                slideActiveClass: 'on',
+                                navigation:{
+                                    prevEl:".prev_nav",
+                                    nextEl:".next_nav"
+                                },
+                                autoplay: {
+                                    delay: 3000,
+                                    disableOnInteraction: false
+                                },
+                            })
+                        })
+                    </script>
+                </div>
+               <!-- inc03 [e] -->
+               <!-- inc04 [s] -->
+               <section id="inc04">
+                    <div class="inc04_wrap">
+                        <div class="tit">
+                            <div class="link" data-aos="fade-down" data-aos-duration="1000">
+                                <div class="pl">Company Overview</div>
+                                <a href=""></a>
+                            </div>
+                            <div class="tit_container" data-aos="fade-right" data-aos-duration="1000">
+                                <h2 class="main_tit">WE MAKE CUSTOOMERS'
+                                    VISION A REALITY <i data-feather="arrow-right"></i></h2>
+                                <div class="pl">[회사명]은 고객의 다양한 요구를 충족시키기 위해 차량 탁송 서비스를 맞춤형으로 제공합니다.
+                                    고급차, 클래식카, 이국적인 차량까지 모든 유형의 차량에 대해 최상의 보호와 효율적인 운송을 보장합니다.
+                                    저희의 전문 팀이 차량 운송의 모든 과정을 세심하게 관리하여 귀하의 기대를 뛰어넘는 서비스를 제공합니다.</div>
+                            </div>
+                        </div>
+                        <div class="bg_img" data-aos="fade-left" data-aos-duration="1000">
+                            <img src="img/main/inc03/img01.jpg" alt="img01">
+                        </div>
+                    </div>
+                </section>
+               <!-- inc04 [e] -->
+                 <!-- inc05 [s] -->
+               <section id="inc05">
+                <div class="inc05_wrapper">
+                    <div class="tit" data-aos="fade-down" data-aos-duration="1000">
+                        <div class="en">Latest News</div>
+                        <div class="pl">차량 탁송 뉴스</div>
+                    </div>
+                    <div class="swiper-container inc05" data-aos="fade-up" data-aos-duration="1000">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                                <img src="img/main/inc05/img01.jpg" alt="img01">
+                                <div class="tit_wrapper">
+                                    <div class="title">해당뉴스의 제목이 들어가는 곳입니다.</div>
+                                    <div class="pl">해당뉴스의 설명이 들어가는 곳입니다.</div>
+                                    <div class="date">2024.08.11</div>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="img/main/inc05/img02.jpg" alt="img02">
+                                <div class="tit_wrapper">
+                                    <div class="title">해당뉴스의 제목이 들어가는 곳입니다.</div>
+                                    <div class="pl">해당뉴스의 설명이 들어가는 곳입니다.</div>
+                                    <div class="date">2024.08.11</div>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="img/main/inc05/img03.jpg" alt="img03">
+                                <div class="tit_wrapper">
+                                    <div class="title">해당뉴스의 제목이 들어가는 곳입니다.</div>
+                                    <div class="pl">해당뉴스의 설명이 들어가는 곳입니다.</div>
+                                    <div class="date">2024.08.11</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav_container" data-aos="fade-blur" data-aos-duration="1000">
+                        <div class="swiper-button-prev prev_nav"></div>
+                        <div class="swiper-button-next next_nav"></div>
+                    </div>
+                </div>
+                <script>
+                    var inc05_slide = new Swiper(".inc05", {
+                        loop:true,
+                        speed:1200,
+                        slidesPerView: '1.3',
+                        spaceBetween: 9,
+                        centeredSlides: true,
+                        navigation:{
+                            prevEl:".prev_nav",
+                            nextEl:".next_nav",
+                            clickable:true,
+                        },
+                        autoplay : { 
+                            delay : 3000,
+                            disableOnInteraction : false,
+                        },
+                        breakpoints:{
+                            1025:{
+                                slidesPerView: '3',
+                                spaceBetween: 30,
+                                centeredSlides: true,
+                            },
+                            769:{
+                                slidesPerView: '3',
+                                spaceBetween: 15,
+                                centeredSlides: true,
+                            },
+                            481:{
+                                slidesPerView: '2',
+                                spaceBetween: 15,
+                                centeredSlides: true,
+                            },
+                            381:{
+                                slidesPerView: '1.5',
+                                spaceBetween: 12,
+                                centeredSlides: true,
+                            }
+                        }
+                    })
+                </script>
+              </section>
+             <!-- inc05 [e] -->
+            <!-- inc06 [s]-->
+             <div id="inc06">
+                <div class="inc06_wrap">
+                    <div class="tit" data-aos="fade-up" data-aos-duration="1200">
+                        <h2>Contact us</h2>
+                        <p>풍부한 노하우를 바탕으로 향상된 탁송기술과, 인력으로 소비자의
+                            편의성을 제공할 것을 약속드립니다. 샘플에 관심을 가져주셔서 감사합니다.</p>
+                        <a href="tel:1544-0000">문의하기
+                            <span data-feather="chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+             </div>
+            <!-- inc06 [e]-->
+            </section>
+            <!-- Section [e] -->
+        </div>
+    </main>
+    <footer>
+        <div class="footer_wrapper">
+            <div class="ft_txt">
+                <img src="img/common/logo.png" alt="sample">
+                <ul class="ft_menu">
+                    <li><a href="">회사소개</a></li>
+                    <li><a href="">사업안내</a></li>
+                    <li><a href="">특수탁송</a></li>
+                    <li><a href="">갤러리</a></li>
+                </ul>
+                <p>고객사 주소,<br>
+                사업자번호,<br>
+                전화번호 등 주요 정보가 들어가는 곳입니다.</p>
+            </div>
+            <div class="ft_adm">
+                <p class="copy">ⓒCopyright SAMPLE - All Rights Reserved. </p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    AOS.init();
+    feather.replace();
+</script>
+</html>
